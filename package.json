@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/KR3RULIE/tp-backend-ejercicio05#readme",
   "dependencies": {
+    "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "express-validator": "^7.2.1",

@@ -6,6 +6,7 @@ const recetasSchema = new Schema({
     required: true,
     minLenghth: 2,
     maxLength: 100,
+    unique: true,
   },
   descripcion: {
     type: String,

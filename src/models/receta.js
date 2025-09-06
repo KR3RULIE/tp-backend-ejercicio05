@@ -4,21 +4,21 @@ const recetasSchema = new Schema({
   titulo: {
     type: String,
     required: true,
-    minLenghth: 2,
-    maxLength: 100,
+    minlength: 2,
+    maxlength: 100,
     unique: true,
   },
   descripcion: {
     type: String,
     required: true,
-    minLenghth: 2,
-    maxLength: 255,
+    minlength: 2,
+    maxlength: 255,
   },
   ingredientes: {
     type: String,
     required: true,
-    minLenghth: 2,
-    maxLength: 2500,
+    minlength: 2,
+    maxlength: 2500,
   },
 });
 

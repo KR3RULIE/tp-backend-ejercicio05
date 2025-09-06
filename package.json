@@ -1,0 +1,34 @@
+{
+  "name": "tp-backend-ejercicio05",
+  "version": "1.0.0",
+  "description": "Este proyecto contrendra la configuracion para almacenar recetas",
+  "main": "inde.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --env-file .env --watch index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KR3RULIE/tp-backend-ejercicio05.git"
+  },
+  "type": "module",
+  "keywords": [
+    "backend",
+    "nodejs",
+    "mongodb",
+    "esmodules"
+  ],
+  "author": "KR3RULIE",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/KR3RULIE/tp-backend-ejercicio05/issues"
+  },
+  "homepage": "https://github.com/KR3RULIE/tp-backend-ejercicio05#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "express-validator": "^7.2.1",
+    "mongoose": "^8.18.0",
+    "morgan": "^1.10.1"
+  }
+}

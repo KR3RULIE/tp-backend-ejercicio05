@@ -13,15 +13,15 @@ export const leerUsuarios = async (req, res) => {
 
 export const crearUsuario = async (req, res) => {
   try {
-    const { nombreUsuario, email, password } = req.body;
+    const { nombreUsuario, email, pw } = req.body;
     //hashear el password
     const saltos = bcrypt.genSaltSync(10);
-    const passwordHash = bcrypt.hashSync(password, saltos);
+    const passwordHash = bcrypt.hashSync(pw, saltos);
 
     const nuevoUsuario = new Usuario({
       nombreUsuario,
       email,
-      password: passwordHash,
+      pw: passwordHash,
     });
     await nuevoUsuario.save();
     //4- enviar respuesta

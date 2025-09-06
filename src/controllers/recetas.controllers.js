@@ -1,4 +1,4 @@
-import Receta from "../models/recetas.models.js";
+import Receta from "../models/receta.js";
 
 export const leerRecetas = async (req, res) => {
   try {

@@ -1,8 +1,10 @@
 import recetasRoutes from "./recetas.routes.js";
+import usuarioRoutes from "./usuarios.routes.js";
 import { Router } from "express";
 
-const routes = Router();
+const router = Router();
 
-routes.use("/recetas", recetasRoutes);
+router.route("/recetas", recetasRoutes);
+router.route("/usuarios", usuarioRoutes);
 
-export default routes;
+export default router;

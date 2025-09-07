@@ -3,11 +3,13 @@ import resultadoValidacion from "./resultadoValidacion.js";
 
 const validacionUsuario = [
   body("nombreUsuario")
+    .trim()
     .notEmpty()
     .withMessage("El nombre del usuario es obligatorio")
     .isLength({ min: 2, max: 100 })
     .withMessage("El nombre del usuario debe tener entre 2 y 100 caracteres"),
   body("email")
+    .trim()
     .notEmpty()
     .withMessage("El email es un dato obligatorio")
     .isEmail()

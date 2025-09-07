@@ -29,6 +29,10 @@ export const crearUsuario = async (req, res) => {
       mensaje: `El usuario: ${nuevoUsuario.nombreUsuario} fue registrado exitosamente`,
     });
   } catch (error) {
+    if (error.code === 11000) {
+      // Error de duplicado en Mongo (email ya registrado)
+      return res.status(409).json({ message: "El email ya está registrado" });
+    }
     console.error(error);
     res.status(500).json({ mensaje: "Error al crear el usuario" });
   }

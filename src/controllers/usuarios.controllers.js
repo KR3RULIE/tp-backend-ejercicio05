@@ -1,6 +1,6 @@
 import Usuario from "../models/usuario.js";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import generarJWT from "../helpers/generarJWT.js";
 
 export const leerUsuarios = async (req, res) => {
   try {
@@ -53,10 +53,15 @@ export const login = async (req, res) => {
       return res.status(401).json({ mensaje: "Credenciales inválidas" });
     }
     // 3 generar el token
+    const token = await generarJWT(
+      usuarioExistente.nombreUsuario,
+      usuarioExistente.email
+    );
     // 4 enviar la respuesta al frontend
     res.status(200).json({
       mensaje: "Login exitoso",
       nombreUsuario: usuarioExistente.nombreUsuario,
+      token,
     });
   } catch (error) {
     console.error(error);

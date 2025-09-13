@@ -1,5 +1,6 @@
 import Usuario from "../models/usuario.js";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export const leerUsuarios = async (req, res) => {
   try {
@@ -35,5 +36,30 @@ export const crearUsuario = async (req, res) => {
     }
     console.error(error);
     res.status(500).json({ mensaje: "Error al crear el usuario" });
+  }
+};
+
+export const login = async (req, res) => {
+  try {
+    // 1 verificar que el email exista, si no existe enviar un error
+    const { email, pw } = req.body;
+    const usuarioExistente = await Usuario.findOne({ email });
+    if (!usuarioExistente) {
+      return res.status(404).json({ mensaje: "No se encontro el usuario" });
+    }
+    // 2 si existe el mail, verificar que el password sea correcto, si el password no es el mismo, enviar un mensaje error
+    const passwordCorrecto = bcrypt.compareSync(pw, usuarioExistente.pw);
+    if (!passwordCorrecto) {
+      return res.status(401).json({ mensaje: "Credenciales inválidas" });
+    }
+    // 3 generar el token
+    // 4 enviar la respuesta al frontend
+    res.status(200).json({
+      mensaje: "Login exitoso",
+      nombreUsuario: usuarioExistente.nombreUsuario,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ mensaje: "Error al logear en el usuario" });
   }
 };

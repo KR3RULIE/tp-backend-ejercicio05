@@ -18,7 +18,7 @@ router
 router
   .route("/:id")
   .get(leerRecetaID)
-  .delete(borrarReceta)
-  .put(validarReceta, editarReceta);
+  .delete(verificarJWT, borrarReceta)
+  .put([verificarJWT, validarReceta], editarReceta);
 
 export default router;

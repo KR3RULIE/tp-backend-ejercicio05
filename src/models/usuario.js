@@ -35,7 +35,7 @@ const usuarioSchema = new Schema(
     },
   },
   {
-    timestamps: true, // agrega createdAt y updatedAt automáticamente
+    timestamps: true,
   }
 );
 const Usuario = mongoose.model("Usuario", usuarioSchema);

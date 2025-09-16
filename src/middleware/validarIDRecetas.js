@@ -11,7 +11,8 @@ const validarReceta = [
     .custom(async (value) => {
       const receta = await Receta.findOne({ titulo: value });
       if (!receta) return true;
-      if (req.params?.id && receta._id.toString() === req.params.id) return true;
+      if (req.params?.id && receta._id.toString() === req.params.id)
+        return true;
       throw new Error("Ya existe una receta con este título");
     }),
   body("descripcion")

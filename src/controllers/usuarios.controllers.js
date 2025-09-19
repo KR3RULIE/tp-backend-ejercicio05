@@ -1,6 +1,6 @@
+import generarJWT from "../helpers/generarJWT.js";
 import Usuario from "../models/usuario.js";
 import bcrypt from "bcrypt";
-import generarJWT from "../helpers/generarJWT.js";
 
 export const leerUsuarios = async (req, res) => {
   try {
@@ -42,7 +42,7 @@ export const crearUsuario = async (req, res) => {
 export const login = async (req, res) => {
   try {
     const { email, pw } = req.body;
-    const usuarioExistente = await Usuario.findOne({ email });
+    const usuarioExistente = await Usuario.findOne({ email: email });
     if (!usuarioExistente) {
       return res.status(404).json({ mensaje: "No se encontro el usuario" });
     }
@@ -57,7 +57,7 @@ export const login = async (req, res) => {
     res.status(200).json({
       mensaje: "Login exitoso",
       nombreUsuario: usuarioExistente.nombreUsuario,
-      token,
+      token: token,
     });
   } catch (error) {
     console.error(error);
